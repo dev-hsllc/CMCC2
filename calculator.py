@@ -51,7 +51,7 @@ def format_dollar_value(value):
 
 # Title of the app
 st.title('Contract Manager Pricing Estimator')
-st.caption('v06-hsllc')
+st.caption('v07-hsllc')
 
 # Blurb at the top of the page
 st.markdown("""
@@ -164,13 +164,14 @@ if st.button('Calculate Pricing'):
     pinnacle_total = round(pinnacle_base + pll_costs_pinnacle + setup_costs, -1)
 
     st.markdown(f'<div class="pb40"></div>', unsafe_allow_html=True)
-    # Taking inputs
-    cmcc_user = st.text_input('Full Name')
-    cmcc_company = st.text_input('Company')
 
     # Display the formatted results
     st.markdown(f'<div class="pt40 pb40">Thank you for your interest in Contract Manager. Based on the inputs you\'ve provided, a ballpark estimate for your organization is:</div>', unsafe_allow_html=True)
-    
+    st.markdown(f'<div class="pt20"></div>', unsafe_allow_html=True)
+    # Taking inputs
+    cmcc_user = st.text_input('Full Name')
+    cmcc_company = st.text_input('Company')
+    st.markdown(f'<div class="pb20"></div>', unsafe_allow_html=True)
     st.markdown(f'<div class="pricing-output results-title">Foundation Tier Annual Pricing</div>', unsafe_allow_html=True)   
     st.markdown(f'<div class="pricing-output">Base License: <span class="dollar">${foundation_base:,.2f}</span></div>', unsafe_allow_html=True)
     st.markdown(f'<div class="pricing-output">Preferred Language Library: <span class="dollar">${pll_costs:,.2f}</span></div>', unsafe_allow_html=True)
