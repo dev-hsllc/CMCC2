@@ -51,7 +51,7 @@ def format_dollar_value(value):
 
 # Title of the app
 st.title('Contract Manager Pricing Estimator')
-st.caption('v05-hsllc')
+st.caption('v06-hsllc')
 
 # Blurb at the top of the page
 st.markdown("""
@@ -59,10 +59,6 @@ Are you interested in hiring a Contract Manager for your organization? Just move
 st.caption("""
 **NOTE:** All estimates are purely for informational purposes; customized pricing will likely vary once we understand the nuances of your specific situation.           
 """)
-st.markdown(f'<div class="pb10"></div>', unsafe_allow_html=True)
-# Taking inputs
-cmcc_user = st.text_input('Full Name')
-cmcc_company = st.text_input('Company')
 st.markdown(f'<div class="pb40"></div>', unsafe_allow_html=True)
 
 # User inputs using sliders
@@ -167,6 +163,10 @@ if st.button('Calculate Pricing'):
     framework_total = round(framework_base + pll_costs_framework + setup_costs, -1)
     pinnacle_total = round(pinnacle_base + pll_costs_pinnacle + setup_costs, -1)
 
+    st.markdown(f'<div class="pb40"></div>', unsafe_allow_html=True)
+    # Taking inputs
+    cmcc_user = st.text_input('Full Name')
+    cmcc_company = st.text_input('Company')
 
     # Display the formatted results
     st.markdown(f'<div class="pt40 pb40">Thank you for your interest in Contract Manager. Based on the inputs you\'ve provided, a ballpark estimate for your organization is:</div>', unsafe_allow_html=True)
@@ -174,24 +174,22 @@ if st.button('Calculate Pricing'):
     st.markdown(f'<div class="pricing-output results-title">Foundation Tier Annual Pricing</div>', unsafe_allow_html=True)   
     st.markdown(f'<div class="pricing-output">Base License: <span class="dollar">${foundation_base:,.2f}</span></div>', unsafe_allow_html=True)
     st.markdown(f'<div class="pricing-output">Preferred Language Library: <span class="dollar">${pll_costs:,.2f}</span></div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="pricing-output pb10">Implementation Costs: <span class="dollar">${setup_costs:,.2f}</span></div>', unsafe_allow_html=True)
+    #st.markdown(f'<div class="pricing-output pb10">Implementation Costs: <span class="dollar">${setup_costs:,.2f}</span></div>', unsafe_allow_html=True)
     st.markdown(f'<div class="pricing-output results-total pl10">Total: <span class="dollar-total">${foundation_total:,.2f}</span></div>', unsafe_allow_html=True)
     st.divider()
     st.markdown(f'<div class="pricing-output results-title">Framework Tier Annual Pricing </div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="pricing-output">Base License: <span class="dollar">${framework_base:,.2f}</span></div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="pricing-output">Preferred Language Library: <span class="dollar">${pll_costs_framework:,.2f}</span></div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="pricing-output pb10">Implementation Costs: <span class="dollar">${setup_costs:,.2f}</span></div>', unsafe_allow_html=True)
+    #st.markdown(f'<div class="pricing-output">Base License: <span class="dollar">${framework_base:,.2f}</span></div>', unsafe_allow_html=True)
+    #st.markdown(f'<div class="pricing-output">Preferred Language Library: <span class="dollar">${pll_costs_framework:,.2f}</span></div>', unsafe_allow_html=True)
+    #st.markdown(f'<div class="pricing-output pb10">Implementation Costs: <span class="dollar">${setup_costs:,.2f}</span></div>', unsafe_allow_html=True)
     st.markdown(f'<div class="pricing-output results-total pl10">Total: <span class="dollar-total">${framework_total:,.2f}</span></div>', unsafe_allow_html=True)
     st.divider()
     st.markdown(f'<div class="pricing-output results-title">Pinnacle Tier Annual Pricing </div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="pricing-output">Base License: <span class="dollar">${pinnacle_base:,.2f}</span></div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="pricing-output">Preferred Language Library: <span class="dollar">${pll_costs_pinnacle:,.2f}</span></div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="pricing-output pb10">Implementation Costs: <span class="dollar">${setup_costs:,.2f}</span></div>', unsafe_allow_html=True)
+    #st.markdown(f'<div class="pricing-output">Base License: <span class="dollar">${pinnacle_base:,.2f}</span></div>', unsafe_allow_html=True)
+    #st.markdown(f'<div class="pricing-output">Preferred Language Library: <span class="dollar">${pll_costs_pinnacle:,.2f}</span></div>', unsafe_allow_html=True)
+    #st.markdown(f'<div class="pricing-output pb10">Implementation Costs: <span class="dollar">${setup_costs:,.2f}</span></div>', unsafe_allow_html=True)
     st.markdown(f'<div class="pricing-output results-total pl10">Total: <span class="dollar-total">${pinnacle_total:,.2f}</span></div>', unsafe_allow_html=True)
 
     st.balloons()
-
-
 
 
 # Run this with `streamlit run this_script.py`
