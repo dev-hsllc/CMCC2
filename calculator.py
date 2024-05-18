@@ -1,5 +1,7 @@
 import streamlit as st
 import math
+import smtplib
+from email.mime.text import MIMEText
 
 # Custom styles for the app
 st.markdown("""
@@ -49,8 +51,9 @@ def format_dollar_value(value):
     return f"${value:,}"
 
 # Title of the app
+password = st.text_input('Password', type="password", disabled=True) 
 st.title('Contract Manager Pricing Estimator')
-st.caption('v02-hsllc')
+st.caption('v03-hsllc')
 
 # Blurb at the top of the page
 st.markdown("""
@@ -182,6 +185,28 @@ if st.button('Calculate Pricing'):
     st.markdown(f'<div class="pricing-output">Preferred Language Library: <span class="dollar">${pll_costs_pinnacle:,.2f}</span></div>', unsafe_allow_html=True)
     st.markdown(f'<div class="pricing-output pb10">Implementation Costs: <span class="dollar">${setup_costs:,.2f}</span></div>', unsafe_allow_html=True)
     st.markdown(f'<div class="pricing-output results-total pl10">Total: <span class="dollar-total">${pinnacle_total:,.2f}</span></div>', unsafe_allow_html=True)
+
+    # Taking inputs YOU WONT NEED THESE!!!!
+    email_sender = "cmccpricing@gmail.com"
+    email_receiver = "developer.hsllc@gmail.com"
+    subject = "CMCC Project Estimator"
+    body = "Hello"
+
+    try:
+        msg = MIMEText(body)
+        msg['From'] = email_sender
+        msg['To'] = email_receiver
+        msg['Subject'] = subject
+
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        #server.starttls()
+        server.login(email_sender, password)
+        server.sendmail(email_sender, email_receiver, msg.as_string())
+        server.quit()
+
+        st.success('Email sent successfully! 🚀')
+    except Exception as e:
+        st.error(f"Failed to send email: {e}")   
     
     st.balloons()
 
