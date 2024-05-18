@@ -35,14 +35,13 @@ def format_dollar_value(value):
     return f"${value:,}"
 
 # Title of the app
-st.title('Contract Manager Pricing Estimator v01')
+st.title('Contract Manager Pricing Estimator')
 
 # Blurb at the top of the page
 st.markdown("""
-Interested in Contract Manager for your organization? Just move the sliders below to best reflect the revenue and contract demands of your organization, and we'll give you some ballpark pricing. **NOTE:** All estimates are purely for informational purposes; actual customized pricing will likely vary once we understand the nuances of your specific situation.
-""")
+Are you interested in hiring a Contract Manager for your organization? Just move the sliders below to best reflect your organization's revenue and contract demands, and we'll give you some ballpark pricing.""")
 st.markdown("""
-**NOTE:** All estimates are purely for informational purposes; actual customized pricing will likely vary once we understand the nuances of your specific situation.
+**NOTE:** All estimates are purely for informational purposes; customized pricing will likely vary once we understand the nuances of your specific situation.
 """)
 
 # User inputs using sliders
@@ -66,6 +65,7 @@ if st.button('Calculate Pricing'):
 	    base_fee = annual_revenue * price_max
     else:
         base_fee = max(9500, annual_revenue * fee_percent)
+
     base_fee = math.trunc(base_fee)
 
     # Variable Costs
@@ -77,6 +77,7 @@ if st.button('Calculate Pricing'):
 	    litera_license = 2000
     else:
 	    litera_license = 4000
+         
     litera_license = math.trunc(litera_license)
 
     #CIDA MS Azure
@@ -100,7 +101,7 @@ if st.button('Calculate Pricing'):
 
     # PLL Costs
     if base_fee < 7500:
-        pll_costs = 1500 #CHANGE TO 1650
+        pll_costs = 1650 #CHANGE TO 1650
     elif base_fee in range(7501, 20000):
         pll_costs = base_fee * .20
     elif base_fee in range(20001, 45000):
@@ -111,7 +112,6 @@ if st.button('Calculate Pricing'):
         pll_costs = base_fee * .125
         
     pll_costs = math.trunc(pll_costs - pll_costs * discount)
-
 
     # PLL Costs Framework
     if framework_base < 7500:
@@ -124,9 +124,8 @@ if st.button('Calculate Pricing'):
         pll_costs_framework = framework_base * .15
     else:
         pll_costs_framework = framework_base * .125
-        
-    pll_costs_framework = math.trunc(pll_costs_framework)
 
+    pll_costs_framework = math.trunc(pll_costs_framework)
 
     # PLL Costs Pinnacle
     if pinnacle_base < 7500:
