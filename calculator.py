@@ -61,8 +61,8 @@ st.caption("""
 """)
 st.markdown(f'<div class="pb10"></div>', unsafe_allow_html=True)
 # Taking inputs
-cmcc_user = st.text_input('', 'First and Last Name', disabled=True)
-cmcc_company = st.text_input('', 'Company', disabled=True)
+cmcc_user = st.text_input('', 'First and Last Name', disabled=False)
+cmcc_company = st.text_input('', 'Company Name', disabled=False)
 st.markdown(f'<div class="pb40"></div>', unsafe_allow_html=True)
 
 # User inputs using sliders
