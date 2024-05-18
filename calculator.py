@@ -1,6 +1,5 @@
 import streamlit as st
 import math
-import webbrowser
 
 
 # Custom styles for the app
@@ -60,6 +59,10 @@ Are you interested in hiring a Contract Manager for your organization? Just move
 st.caption("""
 **NOTE:** All estimates are purely for informational purposes; customized pricing will likely vary once we understand the nuances of your specific situation.           
 """)
+st.markdown(f'<div class="pb10"></div>', unsafe_allow_html=True)
+# Taking inputs
+cmcc_user = st.text_input('', 'First and Last Name', disabled=True)
+cmcc_company = st.text_input('', 'Company', disabled=True)
 st.markdown(f'<div class="pb40"></div>', unsafe_allow_html=True)
 
 # User inputs using sliders
@@ -188,13 +191,7 @@ if st.button('Calculate Pricing'):
 
     st.balloons()
 
-    recipient = 'cmccpricing@gmail.com'
-    subject = 'mysubject'
-    body = 'this is a test'
 
-    body = body.replace(' ', '%20')
-
-    webbrowser.open('mailto:?to=' + recipient + '&subject=' + subject + '&body=' + body, new=1)
 
 
 # Run this with `streamlit run this_script.py`
