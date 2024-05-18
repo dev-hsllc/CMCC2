@@ -5,30 +5,41 @@ import math
 st.markdown("""
 <style>
     /* Base styles */
-    .css-1xi51a1 {
-        font-size: 18px;
-    }
-    .css-1cpxqw2 {
-        font-size: 20px;  /* Bigger text on slider labels */
-    }
     .dollar {
-            font-size: 20px;
+        font-weight: bold;
     }
-    .stSlider .css-14f6t7n {
-        height: 1.5rem !important;  /* Increase size of slider track */
+    .dollar-total {
+        font-size: 30px; 
     }
-    .stSlider .css-1cpxqw2 {
-        font-size: 22px !important;  /* Larger font for slider labels */
+    .pl10 {
+        padding-left: 10px;
+    }            
+    .pt10 {
+        padding-top: 10px;
+    }          
+    .pt20 {
+        padding-top: 20px;
     }
-    .stSlider .st-ae .css-1xgk5py {  /* Increase size of slider handle */
-        height: 1.5rem !important;
-        width: 1.5rem !important;
+    .pt40 {
+        padding-top: 40px;
     }
-    .st-de {
-        background-color: #02006c !important;  /* Change slider handle to blue */
+    .pb10 {
+        padding-bottom: 10px;
+    }                 
+    .pb20 {
+        padding-bottom: 20px;
     }
-    .st-dh {
-        background-color: #ccd6f6 !important;  /* Change slider track to blue */
+    .pb40 {
+        padding-bottom: 40px;
+    }
+    .results-title {
+        color: #02006c;
+        font-size: 140%;           
+    }
+    .results-total {
+        color: #02006c;
+        font-weight: bold;
+        background-color: #ccd6f6
     }
 </style>
 """, unsafe_allow_html=True)
@@ -39,14 +50,15 @@ def format_dollar_value(value):
 
 # Title of the app
 st.title('Contract Manager Pricing Estimator')
-st.caption('v01-hsllc')
+st.caption('v02-hsllc')
 
 # Blurb at the top of the page
 st.markdown("""
 Are you interested in hiring a Contract Manager for your organization? Just move the sliders below to best reflect your organization's revenue and contract demands, and we'll give you some ballpark pricing.""")
-st.markdown("""
-**NOTE:** All estimates are purely for informational purposes; customized pricing will likely vary once we understand the nuances of your specific situation.
+st.caption("""
+**NOTE:** All estimates are purely for informational purposes; customized pricing will likely vary once we understand the nuances of your specific situation.           
 """)
+st.markdown(f'<div class="pb40"></div>', unsafe_allow_html=True)
 
 # User inputs using sliders
 annual_revenue = st.slider('Select your annual revenue (USD):', min_value=10000000, max_value=1000000000, step=10000000)
@@ -151,10 +163,25 @@ if st.button('Calculate Pricing'):
     pinnacle_total = round(pinnacle_base + pll_costs_pinnacle + setup_costs, -1)
 
     # Display the formatted results
-    st.markdown(f'Thank you for your interest in Contract Manager. Based on the inputs you\'ve provided, a ballpark estimate for your organization is:', unsafe_allow_html=True)
-    st.markdown(f'<div class="pricing-output">Foundation Tier annual pricing is: <span class="dollar">${foundation_total:,.2f}</span></div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="pricing-output">Framework Tier annual pricing is: <span class="dollar">${framework_total:,.2f}</span></div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="pricing-output">Pinnacle Tier annual pricing is: <span class="dollar">${pinnacle_total:,.2f}</span></div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="pt40 pb40">Thank you for your interest in Contract Manager. Based on the inputs you\'ve provided, a ballpark estimate for your organization is:</div>', unsafe_allow_html=True)
+    
+    st.markdown(f'<div class="pricing-output results-title">Foundation Tier Annual Pricing</div>', unsafe_allow_html=True)   
+    st.markdown(f'<div class="pricing-output">Base License: <span class="dollar">${foundation_base:,.2f}</span></div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="pricing-output">Preferred Language Library: <span class="dollar">${pll_costs:,.2f}</span></div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="pricing-output pb10">Implementation Costs: <span class="dollar">${setup_costs:,.2f}</span></div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="pricing-output results-total pl10">Total: <span class="dollar-total">${foundation_total:,.2f}</span></div>', unsafe_allow_html=True)
+    st.divider()
+    st.markdown(f'<div class="pricing-output results-title">Framework Tier Annual Pricing </div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="pricing-output">Base License: <span class="dollar">${framework_base:,.2f}</span></div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="pricing-output">Preferred Language Library: <span class="dollar">${pll_costs_framework:,.2f}</span></div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="pricing-output pb10">Implementation Costs: <span class="dollar">${setup_costs:,.2f}</span></div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="pricing-output results-total pl10">Total: <span class="dollar-total">${framework_total:,.2f}</span></div>', unsafe_allow_html=True)
+    st.divider()
+    st.markdown(f'<div class="pricing-output results-title">Pinnacle Tier Annual Pricing </div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="pricing-output">Base License: <span class="dollar">${pinnacle_base:,.2f}</span></div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="pricing-output">Preferred Language Library: <span class="dollar">${pll_costs_pinnacle:,.2f}</span></div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="pricing-output pb10">Implementation Costs: <span class="dollar">${setup_costs:,.2f}</span></div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="pricing-output results-total pl10">Total: <span class="dollar-total">${pinnacle_total:,.2f}</span></div>', unsafe_allow_html=True)
     
     st.balloons()
 
