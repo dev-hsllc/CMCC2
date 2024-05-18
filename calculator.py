@@ -35,7 +35,7 @@ def format_dollar_value(value):
     return f"${value:,}"
 
 # Title of the app
-st.title('Contract Manager Pricing Estimator')
+st.title('Contract Manager Pricing Estimator!')
 
 # Blurb at the top of the page
 st.markdown("""
