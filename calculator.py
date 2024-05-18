@@ -11,6 +11,9 @@ st.markdown("""
     .css-1cpxqw2 {
         font-size: 20px;  /* Bigger text on slider labels */
     }
+    .dollar {
+            font-size: 20px;
+    }
     .stSlider .css-14f6t7n {
         height: 1.5rem !important;  /* Increase size of slider track */
     }
@@ -36,6 +39,7 @@ def format_dollar_value(value):
 
 # Title of the app
 st.title('Contract Manager Pricing Estimator')
+st.caption('v01-hsllc')
 
 # Blurb at the top of the page
 st.markdown("""
@@ -151,7 +155,8 @@ if st.button('Calculate Pricing'):
     st.markdown(f'<div class="pricing-output">Foundation Tier annual pricing is: <span class="dollar">${foundation_total:,.2f}</span></div>', unsafe_allow_html=True)
     st.markdown(f'<div class="pricing-output">Framework Tier annual pricing is: <span class="dollar">${framework_total:,.2f}</span></div>', unsafe_allow_html=True)
     st.markdown(f'<div class="pricing-output">Pinnacle Tier annual pricing is: <span class="dollar">${pinnacle_total:,.2f}</span></div>', unsafe_allow_html=True)
-
+    
+    st.balloons()
 
 
 # Run this with `streamlit run this_script.py`
