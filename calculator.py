@@ -12,6 +12,10 @@ st.markdown("""
     .dollar-total {
         font-size: 24px; 
     }
+    text-sml {
+        font-size: 2px;
+        color: red;       
+    }
     .pl10 {
         padding-left: 10px;
     }            
@@ -51,7 +55,6 @@ def format_dollar_value(value):
 
 # Title of the app
 st.title('Contract Manager Pricing Estimator')
-st.caption('v09-hsllc')
 
 # Blurb at the top of the page
 st.markdown("""
@@ -191,6 +194,5 @@ if st.button('Calculate Pricing'):
     st.markdown(f'<div class="pricing-output results-total pl10">Total: <span class="dollar-total">${pinnacle_total:,.2f}</span></div>', unsafe_allow_html=True)
 
     st.balloons()
-
 
 # Run this with `streamlit run this_script.py`
