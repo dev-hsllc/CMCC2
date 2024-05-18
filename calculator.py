@@ -1,5 +1,6 @@
 import streamlit as st
 import math
+import webbrowser
 
 
 # Custom styles for the app
@@ -186,6 +187,14 @@ if st.button('Calculate Pricing'):
     st.markdown(f'<div class="pricing-output results-total pl10">Total: <span class="dollar-total">${pinnacle_total:,.2f}</span></div>', unsafe_allow_html=True)
 
     st.balloons()
+
+    recipient = 'cmccpricing@gmail.com'
+    subject = 'mysubject'
+    body = 'this is a test'
+
+    body = body.replace(' ', '%20')
+
+    webbrowser.open('mailto:?to=' + recipient + '&subject=' + subject + '&body=' + body, new=1)
 
 
 # Run this with `streamlit run this_script.py`
