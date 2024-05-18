@@ -167,7 +167,7 @@ if st.button('Calculate Pricing'):
 
     # Display the formatted results
     st.markdown(f'<div class="pt40 pb40">Thank you for your interest in Contract Manager. Based on the inputs you\'ve provided, a ballpark estimate for your organization is:</div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="pt20"></div>', unsafe_allow_html=True)
+
     # Taking inputs
     cmcc_user = st.text_input('Full Name')
     cmcc_company = st.text_input('Company')
