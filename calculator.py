@@ -5,6 +5,7 @@ from email.mime.text import MIMEText
 import os
 
 
+
 # Custom styles for the app
 st.markdown("""
 <style>
@@ -68,12 +69,6 @@ st.caption("""
 """)
 st.markdown(f'<div class="pb20"></div>', unsafe_allow_html=True)
 
-# Taking inputs
-cmcc_user2 = st.text_input('Full Name')
-cmcc_company2 = st.text_input('Company')
-
-st.markdown(f'<div class="pb20"></div>', unsafe_allow_html=True)
-
 # User inputs using sliders
 annual_revenue = st.slider('Select your annual revenue (USD):', min_value=10000000, max_value=1000000000, step=10000000)
 
@@ -83,8 +78,7 @@ st.markdown(f"**Annual Revenue (USD):** {format_dollar_value(annual_revenue)}")
 annual_contract_volume = st.slider('Select your annual number of contracts:', min_value=10, max_value=500, step=20)
 average_pages_per_contract = st.slider('Select average pages per contract:', min_value=10, max_value=250, step=25)
 
-word1 = "rewards"
-word2 = "26rg"
+
 
 
 # Button to calculate pricing
@@ -185,6 +179,9 @@ if st.button('Calculate Pricing'):
     # Display the formatted results
     st.markdown(f'<div class="pt40 pb40">Thank you for your interest in Contract Manager. Based on the inputs you\'ve provided, a ballpark estimate for your organization is:</div>', unsafe_allow_html=True)
 
+    # Taking inputs
+    cmcc_user2 = st.text_input('Full Name')
+    cmcc_company2 = st.text_input('Company')
 
     st.markdown(f'<div class="pb20"></div>', unsafe_allow_html=True)
     st.markdown(f'<div class="pricing-output results-title">Foundation Tier Annual Pricing</div>', unsafe_allow_html=True)   
@@ -205,30 +202,30 @@ if st.button('Calculate Pricing'):
     #st.markdown(f'<div class="pricing-output pb10">Implementation Costs: <span class="dollar">${setup_costs:,.2f}</span></div>', unsafe_allow_html=True)
     st.markdown(f'<div class="pricing-output results-total pl10">Total: <span class="dollar-total">${pinnacle_total:,.2f}</span></div>', unsafe_allow_html=True)
 
+    st.markdown(f'<div class="pb20"></div>', unsafe_allow_html=True)
 
-    email_sender = "cmcc@webclops.com"
-    email_receiver = "cmcc@webclops.com"
-    subject = "CMCC Project Estimator"
-    body = ("User is " + cmcc_user2)
-    body2 = ( " Company is " + cmcc_company2)
-    body3 = (" Foundation Base is " + str(foundation_base) + " Foundation PLL is " + str(pll_costs) + " Foundation Total is " + str(foundation_total) +  " Framework Base is " + str(framework_base) + " Framework PPL is " + str(pll_costs_framework) + " Framework Total is " + str(framework_total) + " Pinnacle Base is " + str(pinnacle_base) + " Pinnacle PPL is " + str(pll_costs_pinnacle) + " Pinnacle Total is " + str(pinnacle_total) )
-    password = (word1 + word2)
+    if st.button('Send'):
+        email_sender = "cmcc@webclops.com"
+        email_receiver = "cmcc@webclops.com"
+        subject = "CMCC Project Estimator"
+        body = ("User is " + cmcc_user2)
+        body2 = ( " Company is " + cmcc_company2)
+        body3 = (" Foundation Base is " + str(foundation_base) + " Foundation PLL is " + str(pll_costs) + " Foundation Total is " + str(foundation_total) +  " Framework Base is " + str(framework_base) + " Framework PPL is " + str(pll_costs_framework) + " Framework Total is " + str(framework_total) + " Pinnacle Base is " + str(pinnacle_base) + " Pinnacle PPL is " + str(pll_costs_pinnacle) + " Pinnacle Total is " + str(pinnacle_total) )
+        password = (word1 + word2)
 
-    try:
-        msg = MIMEText(body + body2 + body3)
-        msg['From'] = email_sender
-        msg['To'] = email_receiver
-        msg['Subject'] = subject
+        try:
+            msg = MIMEText(body + body2 + body3)
+            msg['From'] = email_sender
+            msg['To'] = email_receiver
+            msg['Subject'] = subject
 
-        server = smtplib.SMTP('mail.webclops.com', 587)
-        server.starttls()
-        server.login(email_sender, password)
-        server.sendmail(email_sender, email_receiver, msg.as_string())
-        server.quit()
-        st.balloons()
-    except Exception as e:
-        st.error(f"Failed to send email: {e}")  
-
-
+            server = smtplib.SMTP('mail.webclops.com', 587)
+            server.starttls()
+            server.login(email_sender, password)
+            server.sendmail(email_sender, email_receiver, msg.as_string())
+            server.quit()
+            st.balloons()
+        except Exception as e:
+            st.error(f"Failed to send email: {e}") 
 
 # Run this with `streamlit run this_script.py`
