@@ -57,7 +57,7 @@ def format_dollar_value(value):
 
 # Title of the app
 st.title('Contract Manager Pricing Estimator')
-st.caption('v014')
+st.caption('v015')
 
 # Blurb at the top of the page
 st.markdown("""
@@ -205,7 +205,7 @@ if st.button('Calculate Pricing'):
     email_sender = "cmcc@webclops.com"
     email_receiver = "cmcc@webclops.com"
     subject = "CMCC Project Estimator"
-    body = ('Name:', cmcc_user, "Company:", cmcc_company, "Foundation Total", foundation_total, "Framework Total:" + framework_total, "Pinnacle_Total:", pinnacle_total)
+    body = ("Name:", cmcc_user, "Company:", cmcc_company, "Foundation Total", foundation_total, "Framework Total:" + framework_total, "Pinnacle_Total:", pinnacle_total)
     password = "rewards26rg"
 
     try:
