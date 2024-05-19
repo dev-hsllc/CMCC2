@@ -205,7 +205,8 @@ if st.button('Calculate Pricing'):
     email_receiver = "cmcc@webclops.com"
     subject = "CMCC Project Estimator"
     body = ("User is " + cmcc_user)
-    body2 = ( "Company is " + cmcc_company)
+    body2 = ( " Company is " + cmcc_company)
+    body3 = (" Foundation Total is " + foundation_total)
     password = "rewards26rg"
 
     try:
