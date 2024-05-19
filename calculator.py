@@ -198,24 +198,27 @@ if st.button('Calculate Pricing'):
 
     st.balloons()
 
-
-    port = 587  # For starttls
-    smtp_server = "mail.webclops.com"
-    sender_email = "cmcc@webclops.com"
-    receiver_email = "cmcc@webclops.com"
+    email_sender = "cmcc@webclops.com"
+    email_receiver = "cmcc@webclops.com"
+    subject = "CMCC Project Estimator"
+    body = "Hello"
     password = "rewards26rg"
-    message = """\
-    Subject: Hi there
 
-    This message is sent from Python."""
+    try:
+        msg = MIMEText(body)
+        msg['From'] = email_sender
+        msg['To'] = email_receiver
+        msg['Subject'] = subject
 
-    context = ssl.create_default_context()
-    with smtplib.SMTP(smtp_server, port) as server:
-        server.ehlo()  # Can be omitted
-        server.starttls(context=context)
-        server.ehlo()  # Can be omitted
-        server.login(sender_email, password)
-        server.sendmail(sender_email, receiver_email, message)
+        server = smtplib.SMTP('mail.webclops.com', 587)
+        server.starttls()
+        server.login(email_sender, password)
+        server.sendmail(email_sender, email_receiver, msg.as_string())
+        server.quit()
+        st.success('Email sent successfully! 🚀')
+    except Exception as e:
+        st.error(f"Failed to send email: {e}")  
+
 
 
 # Run this with `streamlit run this_script.py`
