@@ -206,7 +206,8 @@ if st.button('Calculate Pricing'):
     subject = "CMCC Project Estimator"
     body = ("User is " + cmcc_user)
     body2 = ( " Company is " + cmcc_company)
-    body3 = (" Foundation Total is " + foundation_total)
+    body3 = (" Foundation Total is ")
+    body4 = (foundation_total)
     password = "rewards26rg"
 
     try:
