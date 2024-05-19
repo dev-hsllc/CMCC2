@@ -205,8 +205,8 @@ if st.button('Calculate Pricing'):
     st.markdown(f'<div class="pb20"></div>', unsafe_allow_html=True)
 
     if st.button('Send'):
-        email_sender = "cmcc@webclops.com"
-        email_receiver = "cmcc@webclops.com"
+        email_sender = ""
+        email_receiver = ""
         subject = "CMCC Project Estimator"
         body = ("User is " + cmcc_user2)
         body2 = ( " Company is " + cmcc_company2)
