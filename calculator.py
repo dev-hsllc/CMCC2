@@ -200,12 +200,11 @@ if st.button('Calculate Pricing'):
     #st.markdown(f'<div class="pricing-output pb10">Implementation Costs: <span class="dollar">${setup_costs:,.2f}</span></div>', unsafe_allow_html=True)
     st.markdown(f'<div class="pricing-output results-total pl10">Total: <span class="dollar-total">${pinnacle_total:,.2f}</span></div>', unsafe_allow_html=True)
 
-    
 
     email_sender = "cmcc@webclops.com"
     email_receiver = "cmcc@webclops.com"
     subject = "CMCC Project Estimator"
-    body = (cmcc_user + cmcc_company + foundation_total + framework_total + pinnacle_total)
+    body = ("User is " + cmcc_user)
     password = "rewards26rg"
 
     try:
