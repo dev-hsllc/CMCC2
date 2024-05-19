@@ -210,7 +210,7 @@ if st.button('Calculate Pricing'):
     password = "rewards26rg"
 
     try:
-        msg = MIMEText(body + body2)
+        msg = MIMEText(body + body2 + body3)
         msg['From'] = email_sender
         msg['To'] = email_receiver
         msg['Subject'] = subject
