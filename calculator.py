@@ -57,7 +57,7 @@ def format_dollar_value(value):
 
 # Title of the app
 st.title('Contract Manager Pricing Estimator')
-st.caption('v013')
+st.caption('v014')
 
 # Blurb at the top of the page
 st.markdown("""
@@ -65,7 +65,13 @@ Are you interested in hiring a Contract Manager for your organization? Just move
 st.caption("""
 **NOTE:** All estimates are purely for informational purposes; customized pricing will likely vary once we understand the nuances of your specific situation.           
 """)
-st.markdown(f'<div class="pb40"></div>', unsafe_allow_html=True)
+st.markdown(f'<div class="pb20"></div>', unsafe_allow_html=True)
+
+# Taking inputs
+cmcc_user = st.text_input('Full Name')
+cmcc_company = st.text_input('Company')
+
+st.markdown(f'<div class="pb20"></div>', unsafe_allow_html=True)
 
 # User inputs using sliders
 annual_revenue = st.slider('Select your annual revenue (USD):', min_value=10000000, max_value=1000000000, step=10000000)
@@ -174,9 +180,7 @@ if st.button('Calculate Pricing'):
     # Display the formatted results
     st.markdown(f'<div class="pt40 pb40">Thank you for your interest in Contract Manager. Based on the inputs you\'ve provided, a ballpark estimate for your organization is:</div>', unsafe_allow_html=True)
 
-    # Taking inputs
-    cmcc_user = st.text_input('Full Name')
-    cmcc_company = st.text_input('Company')
+
     st.markdown(f'<div class="pb20"></div>', unsafe_allow_html=True)
     st.markdown(f'<div class="pricing-output results-title">Foundation Tier Annual Pricing</div>', unsafe_allow_html=True)   
     st.markdown(f'<div class="pricing-output">Base License: <span class="dollar">${foundation_base:,.2f}</span></div>', unsafe_allow_html=True)
@@ -196,7 +200,7 @@ if st.button('Calculate Pricing'):
     #st.markdown(f'<div class="pricing-output pb10">Implementation Costs: <span class="dollar">${setup_costs:,.2f}</span></div>', unsafe_allow_html=True)
     st.markdown(f'<div class="pricing-output results-total pl10">Total: <span class="dollar-total">${pinnacle_total:,.2f}</span></div>', unsafe_allow_html=True)
 
-    st.balloons()
+    
 
     email_sender = "cmcc@webclops.com"
     email_receiver = "cmcc@webclops.com"
@@ -215,7 +219,7 @@ if st.button('Calculate Pricing'):
         server.login(email_sender, password)
         server.sendmail(email_sender, email_receiver, msg.as_string())
         server.quit()
-        st.success('Email sent successfully! 🚀')
+        st.balloons()
     except Exception as e:
         st.error(f"Failed to send email: {e}")  
 
