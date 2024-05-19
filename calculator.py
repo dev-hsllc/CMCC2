@@ -207,7 +207,7 @@ if st.button('Calculate Pricing'):
     body = ("User is " + cmcc_user)
     body2 = ( " Company is " + cmcc_company)
     body3 = (" Foundation Total is ")
-    body4 = (foundation_total)
+    body4 = ({foundation_total})
     password = "rewards26rg"
 
     try:
