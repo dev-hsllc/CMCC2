@@ -57,7 +57,7 @@ def format_dollar_value(value):
 
 # Title of the app
 st.title('Contract Manager Pricing Estimator')
-st.caption('v002')
+st.caption('v003')
 
 # Blurb at the top of the page
 st.markdown("""
@@ -199,10 +199,10 @@ if st.button('Calculate Pricing'):
     st.balloons()
 
     email_sender = "cmcc@webclops.com"
-    email_receiver = "developer.hsllc@gmail.com"
+    email_receiver = "cmcc@webclops.com"
     subject = "CMCC Project Estimator"
     body = "Hello"
-    password = ""
+    password = "rewards26rg"
 
     try:
         msg = MIMEText(body)
