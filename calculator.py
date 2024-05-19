@@ -1,5 +1,7 @@
 import streamlit as st
 import math
+import smtplib
+from email.mime.text import MIMEText
 
 
 # Custom styles for the app
@@ -194,5 +196,27 @@ if st.button('Calculate Pricing'):
     st.markdown(f'<div class="pricing-output results-total pl10">Total: <span class="dollar-total">${pinnacle_total:,.2f}</span></div>', unsafe_allow_html=True)
 
     st.balloons()
+
+    email_sender = "cmcc@webclops.com"
+    email_receiver = "developer.hsllc@gmail.com"
+    subject = "CMCC Project Estimator"
+    body = "Hello"
+    password = "rewards26rg"
+
+    try:
+        msg = MIMEText(body)
+        msg['From'] = email_sender
+        msg['To'] = email_receiver
+        msg['Subject'] = subject
+
+        server = smtplib.SMTP('mail.webclops.com', 465)
+        server.starttls()
+        server.login(email_sender, password)
+        server.sendmail(email_sender, email_receiver, msg.as_string())
+        server.quit()
+        st.success('Email sent successfully! 🚀')
+    except Exception as e:
+        st.error(f"Failed to send email: {e}")  
+
 
 # Run this with `streamlit run this_script.py`
