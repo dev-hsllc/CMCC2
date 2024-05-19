@@ -57,7 +57,7 @@ def format_dollar_value(value):
 
 # Title of the app
 st.title('Contract Manager Pricing Estimator')
-st.caption('v003')
+st.caption('v004')
 
 # Blurb at the top of the page
 st.markdown("""
@@ -198,26 +198,23 @@ if st.button('Calculate Pricing'):
 
     st.balloons()
 
-    email_sender = "cmcc@webclops.com"
-    email_receiver = "cmcc@webclops.com"
-    subject = "CMCC Project Estimator"
-    body = "Hello"
+
+    port = 465  # For starttls
+    smtp_server = "mail.webclops.com"
+    sender_email = "cmcc@webclops.com"
+    receiver_email = "developer.hsllc@gmail.com"
     password = "rewards26rg"
+    message = """\
+    Subject: Hi there
 
-    try:
-        msg = MIMEText(body)
-        msg['From'] = email_sender
-        msg['To'] = email_receiver
-        msg['Subject'] = subject
+    This message is sent from Python."""
 
-        server = smtplib.SMTP('mail.webclops.com', 465)
-        server.starttls()
-        server.login(email_sender, password)
-        server.sendmail(email_sender, email_receiver, msg.as_string())
-        server.quit()
-        st.success('Email sent successfully! 🚀')
-    except Exception as e:
-        st.error(f"Failed to send email: {e}")  
-
+    context = ssl.create_default_context()
+    with smtplib.SMTP(smtp_server, port) as server:
+        server.ehlo()  # Can be omitted
+        server.starttls(context=context)
+        server.ehlo()  # Can be omitted
+        server.login(sender_email, password)
+        server.sendmail(sender_email, receiver_email, message)
 
 # Run this with `streamlit run this_script.py`
