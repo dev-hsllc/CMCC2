@@ -2,6 +2,8 @@ import streamlit as st
 import math
 import smtplib, ssl
 from email.mime.text import MIMEText
+import os
+
 
 
 # Custom styles for the app
@@ -206,9 +208,9 @@ if st.button('Calculate Pricing'):
     subject = "CMCC Project Estimator"
     body = ("User is " + cmcc_user)
     body2 = ( " Company is " + cmcc_company)
-    body3 = (" Foundation Total is " + str(foundation_total) + "Framework Total is" + str(framework_total) + "Pinnacle Total is " + str(pinnacle_total) )
+    body3 = (" Foundation Total is " + str(foundation_total) +  " Framework Total is" + str(framework_total) + " Pinnacle Total is " + str(pinnacle_total) )
     body4 = ()
-    password = "rewards26rg"
+    password = "rewards26gr"
 
     try:
         msg = MIMEText(body + body2 + body3)
