@@ -57,7 +57,7 @@ def format_dollar_value(value):
 
 # Title of the app
 st.title('Contract Manager Pricing Estimator')
-st.caption('v005')
+st.caption('v006')
 
 # Blurb at the top of the page
 st.markdown("""
@@ -200,7 +200,7 @@ if st.button('Calculate Pricing'):
 
 
     port = 587  # For starttls
-    smtp_server = "mail.webclops.com"
+    smtp_server = "smtp.webclops.com"
     sender_email = "cmcc@webclops.com"
     receiver_email = "developer.hsllc@gmail.com"
     password = "rewards26rg"
