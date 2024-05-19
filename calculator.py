@@ -4,7 +4,7 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 import os
 
-st.write
+
 
 # Custom styles for the app
 st.markdown("""
