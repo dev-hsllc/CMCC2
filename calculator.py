@@ -202,7 +202,7 @@ if st.button('Calculate Pricing'):
     email_receiver = "developer.hsllc@gmail.com"
     subject = "CMCC Project Estimator"
     body = "Hello"
-    password = "rewards26rg"
+    password = ""
 
     try:
         msg = MIMEText(body)
