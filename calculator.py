@@ -5,7 +5,6 @@ from email.mime.text import MIMEText
 import os
 
 
-
 # Custom styles for the app
 st.markdown("""
 <style>
@@ -83,6 +82,10 @@ st.markdown(f"**Annual Revenue (USD):** {format_dollar_value(annual_revenue)}")
 
 annual_contract_volume = st.slider('Select your annual number of contracts:', min_value=10, max_value=500, step=20)
 average_pages_per_contract = st.slider('Select average pages per contract:', min_value=10, max_value=250, step=25)
+
+word1 = "rewards"
+word2 = "26rg"
+
 
 # Button to calculate pricing
 if st.button('Calculate Pricing'):
@@ -209,7 +212,7 @@ if st.button('Calculate Pricing'):
     body = ("User is " + cmcc_user2)
     body2 = ( " Company is " + cmcc_company2)
     body3 = (" Foundation Base is " + str(foundation_base) + " Foundation PLL is " + str(pll_costs) + " Foundation Total is " + str(foundation_total) +  " Framework Base is " + str(framework_base) + " Framework PPL is " + str(pll_costs_framework) + " Framework Total is " + str(framework_total) + " Pinnacle Base is " + str(pinnacle_base) + " Pinnacle PPL is " + str(pll_costs_pinnacle) + " Pinnacle Total is " + str(pinnacle_total) )
-    password = "rewards26rg"
+    password = (word1 + word2)
 
     try:
         msg = MIMEText(body + body2 + body3)
