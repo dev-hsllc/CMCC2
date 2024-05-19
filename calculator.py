@@ -204,11 +204,12 @@ if st.button('Calculate Pricing'):
     email_sender = "cmcc@webclops.com"
     email_receiver = "cmcc@webclops.com"
     subject = "CMCC Project Estimator"
-    body = ("User is " + cmcc_user + "Company is "  + cmcc_company + "Foundation Total is " + foundation_total + "Framework Total is " + framework_total + "Pinnacle Total is " + pinnacle_total)
+    body = ("User is " + cmcc_user)
+    body2 = ( "Company is " + cmcc_company)
     password = "rewards26rg"
 
     try:
-        msg = MIMEText(body)
+        msg = MIMEText(body + body2)
         msg['From'] = email_sender
         msg['To'] = email_receiver
         msg['Subject'] = subject
