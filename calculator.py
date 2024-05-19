@@ -1,6 +1,6 @@
 import streamlit as st
 import math
-import smtplib
+import smtplib, ssl
 from email.mime.text import MIMEText
 
 
@@ -57,7 +57,7 @@ def format_dollar_value(value):
 
 # Title of the app
 st.title('Contract Manager Pricing Estimator')
-st.caption('v001')
+st.caption('v002')
 
 # Blurb at the top of the page
 st.markdown("""
