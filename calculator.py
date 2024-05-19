@@ -57,6 +57,7 @@ def format_dollar_value(value):
 
 # Title of the app
 st.title('Contract Manager Pricing Estimator')
+st.caption('v001')
 
 # Blurb at the top of the page
 st.markdown("""
