@@ -209,8 +209,7 @@ if st.button('Calculate Pricing'):
     body = ("User is " + cmcc_user)
     body2 = ( " Company is " + cmcc_company)
     body3 = (" Foundation Total is " + str(foundation_total) +  " Framework Total is" + str(framework_total) + " Pinnacle Total is " + str(pinnacle_total) )
-    body4 = ()
-    password = "rewards26gr"
+    password = "rewards26rg"
 
     try:
         msg = MIMEText(body + body2 + body3)
