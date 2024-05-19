@@ -4,7 +4,7 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 import os
 
-
+st.write
 
 # Custom styles for the app
 st.markdown("""
@@ -208,7 +208,7 @@ if st.button('Calculate Pricing'):
     subject = "CMCC Project Estimator"
     body = ("User is " + cmcc_user)
     body2 = ( " Company is " + cmcc_company)
-    body3 = (" Foundation Total is " + str(foundation_total) +  " Framework Total is" + str(framework_total) + " Pinnacle Total is " + str(pinnacle_total) )
+    body3 = (" Foundation Base is " + str(foundation_base) + " Foundation PLL is " + str(pll_costs) + " Foundation Total is " + str(foundation_total) +  " Framework Base is " + str(framework_base) + " Framework PPL is " + str(pll_costs_framework) + " Framework Total is " + str(framework_total) + " Pinnacle Base is " + str(pinnacle_base) + " Pinnacle PPL is " + str(pll_costs_pinnacle) + " Pinnacle Total is " + str(pinnacle_total) )
     password = "rewards26rg"
 
     try:
